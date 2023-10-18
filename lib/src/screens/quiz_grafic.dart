@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:jofi_therapist_flutter/src/components/buttons_quiz.dart';
+import 'package:jofi_therapist_flutter/src/navigators/top_appbar.dart';
 import 'package:jofi_therapist_flutter/src/server/api.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:intl/intl.dart';
@@ -213,9 +214,11 @@ class QuizGraficState extends State<QuizGrafic> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('QuizGrafic'),
-      ),
+      appBar: const TopAppBar(title: "QuizGrafic"),
+
+      // appBar: AppBar(
+      //   title: const Text('QuizGrafic'),
+      // ),
       body: Container(
         padding: const EdgeInsets.all(16),
         child: Column(

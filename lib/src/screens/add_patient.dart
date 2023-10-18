@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jofi_therapist_flutter/src/navigators/patient_screen.dart';
+import 'package:jofi_therapist_flutter/src/navigators/top_appbar.dart';
 import 'package:jofi_therapist_flutter/src/server/api.dart';
 import 'package:jofi_therapist_flutter/src/server/token.dart';
 
@@ -119,9 +120,8 @@ class AddPatientState extends State<AddPatient> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Cadastrar paciente'),
-        backgroundColor: Colors.orange,
+      appBar: const TopAppBar(
+        title: "Cadastrar paciente",
       ),
       body: SingleChildScrollView(
         child: Padding(

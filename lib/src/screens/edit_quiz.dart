@@ -5,6 +5,7 @@ import 'package:jofi_therapist_flutter/src/components/escala_0_a_10.dart';
 import 'package:jofi_therapist_flutter/src/components/escala_likert_quiz.dart';
 import 'package:jofi_therapist_flutter/src/components/pergunta_descritiva.dart';
 import 'package:jofi_therapist_flutter/src/components/quiz_check.dart';
+import 'package:jofi_therapist_flutter/src/navigators/top_appbar.dart';
 import 'package:jofi_therapist_flutter/src/server/api.dart';
 
 class EditQuiz extends StatefulWidget {
@@ -151,9 +152,7 @@ class EditQuizState extends State<EditQuiz> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Edit Question'),
-      ),
+      appBar: const TopAppBar(title: 'Editar Questionário'),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),

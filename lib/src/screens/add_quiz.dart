@@ -6,6 +6,7 @@ import 'package:jofi_therapist_flutter/src/components/escala_likert_quiz.dart';
 import 'package:jofi_therapist_flutter/src/components/pergunta_descritiva.dart';
 import 'package:jofi_therapist_flutter/src/components/quiz_check.dart';
 import 'package:jofi_therapist_flutter/src/components/speed_dial.dart';
+import 'package:jofi_therapist_flutter/src/navigators/top_appbar.dart';
 import 'package:jofi_therapist_flutter/src/server/api.dart';
 import 'package:jofi_therapist_flutter/src/server/token.dart';
 import 'package:uuid/uuid.dart';
@@ -44,10 +45,12 @@ class AddQuizState extends State<AddQuiz> {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Adicionar questionário'),
-          backgroundColor: Colors.orange,
-        ),
+        appBar: const TopAppBar(title: "Adicionar questionário"),
+
+        // appBar: AppBar(
+        //   title: const Text(''),
+        //   backgroundColor: Colors.orange,
+        // ),
         body: SingleChildScrollView(
           controller: scrollViewController,
           child: Padding(

@@ -52,11 +52,12 @@ class TabQuizState extends State<TabQuiz> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Questionários"),
-        backgroundColor: Colors.orange,
-      ),
+      // appBar: AppBar(
+      //   title: const Text("Questionários"),
+      //   backgroundColor: Colors.orange,
+      // ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
             width: double.infinity,
@@ -64,7 +65,7 @@ class TabQuizState extends State<TabQuiz> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
             ),
-            margin: const EdgeInsets.only(top: 20, bottom: 10),
+            margin: const EdgeInsets.only(top: 5, bottom: 5),
           ),
           Expanded(
             child: ListView.builder(
@@ -85,17 +86,18 @@ class TabQuizState extends State<TabQuiz> {
                     );
                   },
                   child: Container(
-                    padding: const EdgeInsets.all(16),
-                    margin: const EdgeInsets.only(
-                      bottom: 37,
-                      right: 10,
-                      left: 10,
-                    ),
+                    // color: Colors.red,
+                    padding: const EdgeInsets.all(15),
+                    // margin: const EdgeInsets.only(
+                    //   bottom: 37,
+                    //   right: 10,
+                    //   left: 10,
+                    // ),
                     width: double.infinity,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
+                    // decoration: BoxDecoration(
+                    //   border: Border.all(color: Colors.grey),
+                    //   borderRadius: BorderRadius.circular(8),
+                    // ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

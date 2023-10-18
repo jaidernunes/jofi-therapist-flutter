@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart';
 import 'package:jofi_therapist_flutter/src/components/status_bar.dart';
+import 'package:jofi_therapist_flutter/src/navigators/top_appbar.dart';
 import 'package:jofi_therapist_flutter/src/server/api.dart';
 import 'package:jofi_therapist_flutter/src/server/token.dart';
 
@@ -276,10 +277,12 @@ class SummaryState extends State<Summary> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Paciente"),
-        backgroundColor: Colors.orange,
-      ),
+      appBar: const TopAppBar(title: "Paciente"),
+
+      // appBar: AppBar(
+      //   title: const Text("Paciente"),
+      //   backgroundColor: Colors.orange,
+      // ),
       body: Stack(
         children: [
           const StatusBar(),

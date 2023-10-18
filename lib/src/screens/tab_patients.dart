@@ -70,10 +70,7 @@ class TabPatientsState extends State<TabPatients> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Pacientes"),
-        backgroundColor: Colors.orange,
-      ),
+      // appBar: const TopAppBar(title: "Pacientes"),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(

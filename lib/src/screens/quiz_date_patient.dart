@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:jofi_therapist_flutter/src/components/checkbox.dart';
+import 'package:jofi_therapist_flutter/src/navigators/top_appbar.dart';
 import 'package:jofi_therapist_flutter/src/screens/quizes.dart';
 import 'package:jofi_therapist_flutter/src/server/api.dart';
 
@@ -144,9 +145,11 @@ class QuizDatePatientState extends State<QuizDatePatient> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('QuizDatePatient'),
-      ),
+      appBar: const TopAppBar(title: "QuizDatePatient"),
+
+      // appBar: AppBar(
+      //   title: const Text('QuizDatePatient'),
+      // ),
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(16),

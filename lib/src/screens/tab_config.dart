@@ -29,11 +29,11 @@ class _TabConfigState extends State<TabConfig> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Configurações"),
-        backgroundColor: Colors.orange,
-      ),
+      // appBar: const TopAppBar(
+      //   title: "Configurações",
+      // ),
       body: Container(
+        padding: const EdgeInsets.only(top: 20),
         color: const Color.fromARGB(255, 255, 255, 255),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -41,7 +41,7 @@ class _TabConfigState extends State<TabConfig> {
             const SizedBox(height: 10),
             ButtonConfig(
               action: () {},
-              text: "Dúvidas comuns",
+              text: "Editar meu Perfil",
               img: const AssetImage("assets/images/edit.png"),
             ),
             ButtonConfig(

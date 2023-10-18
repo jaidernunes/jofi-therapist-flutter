@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jofi_therapist_flutter/src/components/buttons_quiz.dart';
+import 'package:jofi_therapist_flutter/src/navigators/top_appbar.dart';
 import 'package:jofi_therapist_flutter/src/screens/quiz_grafic.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -23,9 +24,11 @@ class Grafic2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Grafic2'),
-      ),
+      appBar: const TopAppBar(title: "Grafic2"),
+
+      // appBar: AppBar(
+      //   title: const Text('Grafic2'),
+      // ),
       body: Container(
         padding: const EdgeInsets.all(16),
         child: Column(
