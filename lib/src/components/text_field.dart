@@ -53,12 +53,13 @@ class _TextFieldComponentState extends State<TextFieldComponent> {
         borderRadius: BorderRadius.circular(8),
       ),
       child: TextField(
-        decoration: InputDecoration(
-          hintText: widget.placeholder,
-        ),
         style: const TextStyle(
           fontFamily: 'Inter',
           fontWeight: FontWeight.w400,
+        ),
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          hintText: widget.placeholder,
         ),
         controller: TextEditingController(
           text: widget.value,

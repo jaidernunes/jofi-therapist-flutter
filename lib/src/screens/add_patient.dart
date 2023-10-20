@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:jofi_therapist_flutter/src/components/button_standard_bottom.dart';
+import 'package:jofi_therapist_flutter/src/components/textform_input_container.dart';
 import 'package:jofi_therapist_flutter/src/navigators/patient_screen.dart';
 import 'package:jofi_therapist_flutter/src/navigators/top_appbar.dart';
 import 'package:jofi_therapist_flutter/src/server/api.dart';
 import 'package:jofi_therapist_flutter/src/server/token.dart';
+import 'package:jofi_therapist_flutter/themes/app_theme.dart';
 
 class AddPatient extends StatefulWidget {
   const AddPatient({super.key});
@@ -129,127 +132,302 @@ class AddPatientState extends State<AddPatient> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                margin: const EdgeInsets.only(top: 10),
-                child: TextField(
+              TextFormInputContainer(
+                child: TextFormField(
                   onChanged: (value) => setState(() => namePacient = value),
+                  style: const TextStyle(
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.w400,
+                  ),
                   decoration: InputDecoration(
-                    labelText: 'Nome',
+                    hintText: 'Nome do paciente',
+                    hintStyle: AppTheme.inputHintTextStyle,
+                    border: InputBorder.none,
                     errorText:
                         !isValid['namePacient']! ? 'Nome inválido' : null,
                   ),
                 ),
               ),
-              Container(
-                margin: const EdgeInsets.only(top: 10),
+              // Container(
+              //   margin: const EdgeInsets.only(top: 10),
+              //   padding: const EdgeInsets.only(left: 15),
+              //   alignment: Alignment.centerLeft,
+              //   height: 46,
+              //   decoration: BoxDecoration(
+              //     border: Border.all(
+              //       color: const Color(0xFF4F4F4F),
+              //       width: 1.0,
+              //     ),
+              //     borderRadius: BorderRadius.circular(8),
+              //   ),
+              //   child: TextFormField(
+              //     onChanged: (value) => setState(() => namePacient = value),
+              //     style: const TextStyle(
+              //       fontFamily: 'Inter',
+              //       fontWeight: FontWeight.w400,
+              //     ),
+              //     decoration: InputDecoration(
+              //       hintText: 'Nome do paciente',
+              //       border: InputBorder.none,
+              //       errorText:
+              //           !isValid['namePacient']! ? 'Nome inválido' : null,
+              //     ),
+              //   ),
+              // ),
+
+              TextFormInputContainer(
                 child: TextField(
                   onChanged: (value) => setState(() => emailPacient = value),
                   decoration: InputDecoration(
-                    labelText: 'E-mail',
+                    border: InputBorder.none,
+                    hintText: 'E-mail',
+                    hintStyle: AppTheme.inputHintTextStyle,
                     errorText:
                         !isValid['emailPacient']! ? 'Email inválido' : null,
                   ),
                 ),
               ),
-              Container(
-                margin: const EdgeInsets.only(top: 10),
+              // Container(
+              //   margin: const EdgeInsets.only(top: 10),
+              //   child: TextField(
+              //     onChanged: (value) => setState(() => emailPacient = value),
+              //     decoration: InputDecoration(
+              //       labelText: 'E-mail',
+              //       errorText:
+              //           !isValid['emailPacient']! ? 'Email inválido' : null,
+              //     ),
+              //   ),
+              // ),
+              TextFormInputContainer(
                 child: TextField(
                   onChanged: (value) => setState(() => telPacient = value),
                   decoration: InputDecoration(
-                    labelText: 'Telefone',
+                    border: InputBorder.none,
+                    hintText: 'Telefone celular',
+                    hintStyle: AppTheme.inputHintTextStyle,
                     errorText:
                         !isValid['telPacient']! ? 'Telefone inválido' : null,
                   ),
                 ),
               ),
+              // Container(
+              //   margin: const EdgeInsets.only(top: 10),
+              //   child: TextField(
+              //     onChanged: (value) => setState(() => telPacient = value),
+              //     decoration: InputDecoration(
+              //       labelText: 'Telefone',
+              //       errorText:
+              //           !isValid['telPacient']! ? 'Telefone inválido' : null,
+              //     ),
+              //   ),
+              // ),
               Container(
-                margin: const EdgeInsets.only(top: 15),
-                child: const Text('Data de nascimento'),
-              ),
-              GestureDetector(
-                onTap: () async {
-                  DateTime? selectedDate = await showDatePicker(
-                    context: context,
-                    initialDate: date ?? DateTime.now(),
-                    firstDate: DateTime(1900),
-                    lastDate: DateTime(2101),
-                    builder: (BuildContext context, Widget? child) {
-                      return Theme(
-                        data: ThemeData.light().copyWith(
-                          primaryColor: const Color(0xFF6200EE),
-                          buttonTheme: const ButtonThemeData(
-                            textTheme: ButtonTextTheme.primary,
-                          ),
+                margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 5),
+                child: Row(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Data de nascimento',
+                          style: AppTheme.inputHintTextStyle,
                         ),
-                        child: child!,
-                      );
-                    },
-                  );
-                  if (selectedDate != null && selectedDate != date) {
-                    setState(() {
-                      date = selectedDate;
-                    });
-                  }
-                },
-                child: Container(
-                  margin: const EdgeInsets.only(top: 10),
-                  height: 50.0,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
+                        const SizedBox(height: 8),
+                        Text(
+                          date != null
+                              ? '${date!.day.toString().padLeft(2, '0')}/${date!.month.toString().padLeft(2, '0')}/${date!.year}'
+                              : 'Data de nascimento',
+                          style: const TextStyle(
+                            fontSize: 16.0,
+                            color: Colors.black,
+                          ),
+                          // textAlign: TextAlign.left,
+                        ),
+                      ],
                     ),
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                  child: Center(
-                    child: Text(
-                      date != null
-                          ? '${date!.day.toString().padLeft(2, '0')}/${date!.month.toString().padLeft(2, '0')}/${date!.year}'
-                          : 'Data de nascimento',
-                      style: const TextStyle(
-                        fontSize: 16.0,
-                      ),
+                    const Spacer(),
+                    IconButton(
+                      onPressed: () async {
+                        DateTime? selectedDate = await showDatePicker(
+                          context: context,
+                          initialDate: date ?? DateTime.now(),
+                          firstDate: DateTime(1900),
+                          lastDate: DateTime(2101),
+                          builder: (BuildContext context, Widget? child) {
+                            return Theme(
+                              data: ThemeData.light().copyWith(
+                                primaryColor: AppTheme.standardOrange ,
+                                buttonTheme: const ButtonThemeData(
+                                  textTheme: ButtonTextTheme.primary,
+                                ),
+                              ),
+                              child: child!,
+                            );
+                          },
+                        );
+                        if (selectedDate != null && selectedDate != date) {
+                          setState(() {
+                            date = selectedDate;
+                          });
+                        }
+                      },
+                      icon: Image.asset("assets/images/edit.png"),
+                      iconSize: 45,
                     ),
-                  ),
+                  ],
                 ),
               ),
-              Container(
-                margin: const EdgeInsets.only(top: 10),
+
+              // Container(
+              //   margin: const EdgeInsets.only(top: 15),
+              //   child: const Text('Data de nascimento'),
+              // ),
+              // GestureDetector(
+              //   onTap: () async {
+              //     DateTime? selectedDate = await showDatePicker(
+              //       context: context,
+              //       initialDate: date ?? DateTime.now(),
+              //       firstDate: DateTime(1900),
+              //       lastDate: DateTime(2101),
+              //       builder: (BuildContext context, Widget? child) {
+              //         return Theme(
+              //           data: ThemeData.light().copyWith(
+              //             primaryColor: const Color(0xFF6200EE),
+              //             buttonTheme: const ButtonThemeData(
+              //               textTheme: ButtonTextTheme.primary,
+              //             ),
+              //           ),
+              //           child: child!,
+              //         );
+              //       },
+              //     );
+              //     if (selectedDate != null && selectedDate != date) {
+              //       setState(() {
+              //         date = selectedDate;
+              //       });
+              //     }
+              //   },
+              //   child: Container(
+              //     margin: const EdgeInsets.only(top: 10),
+              //     height: 50.0,
+              //     decoration: BoxDecoration(
+              //       border: Border.all(
+              //         color: Colors.grey,
+              //       ),
+              //       borderRadius: BorderRadius.circular(5.0),
+              //     ),
+              //     child: Center(
+              //       child: Text(
+              //         date != null
+              //             ? '${date!.day.toString().padLeft(2, '0')}/${date!.month.toString().padLeft(2, '0')}/${date!.year}'
+              //             : 'Data de nascimento',
+              //         style: const TextStyle(
+              //           fontSize: 16.0,
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+              // ),
+
+              TextFormInputContainer(
                 child: TextField(
                   onChanged: (value) =>
                       setState(() => profissionPacient = value),
                   decoration: InputDecoration(
-                    labelText: 'Profissão do paciente',
+                    border: InputBorder.none,
+                    hintText: 'Profissão',
+                    hintStyle: AppTheme.inputHintTextStyle,
                     errorText: !isValid['profissionPacient']!
                         ? 'Profissão inválida'
                         : null,
                   ),
                 ),
               ),
-              Container(
-                margin: const EdgeInsets.only(top: 10),
+              // Container(
+              //   margin: const EdgeInsets.only(top: 10),
+              //   child: TextField(
+              //     onChanged: (value) =>
+              //         setState(() => profissionPacient = value),
+              //     decoration: InputDecoration(
+              //       labelText: 'Profissão do paciente',
+              //       errorText: !isValid['profissionPacient']!
+              //           ? 'Profissão inválida'
+              //           : null,
+              //     ),
+              //   ),
+              // ),
+
+              TextFormInputContainer(
                 child: TextField(
                   onChanged: (value) =>
                       setState(() => descriptionPacient = value),
                   decoration: InputDecoration(
-                    labelText: 'Descrição do paciente',
+                    border: InputBorder.none,
+                    hintText: 'Descrição',
+                    hintStyle: AppTheme.inputHintTextStyle,
                     errorText: !isValid['descriptionPacient']!
                         ? 'Descrição inválida'
                         : null,
                   ),
                 ),
               ),
+              // Container(
+              //   margin: const EdgeInsets.only(top: 10),
+              //   child: TextField(
+              //     onChanged: (value) =>
+              //         setState(() => descriptionPacient = value),
+              //     decoration: InputDecoration(
+              //       labelText: 'Descrição do paciente',
+              //       errorText: !isValid['descriptionPacient']!
+              //           ? 'Descrição inválida'
+              //           : null,
+              //     ),
+              //   ),
+              // ),
+
               Container(
                 margin: const EdgeInsets.only(top: 10),
-                child: TextField(
-                  onChanged: (value) => setState(() => observPacient = value),
-                  decoration: InputDecoration(
-                    labelText: 'Observações sobre o paciente',
-                    errorText: !isValid['observPacient']!
-                        ? 'Observações inválidas'
-                        : null,
+                padding: const EdgeInsets.only(left: 15),
+                alignment: Alignment.topLeft,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: const Color(0xFF4F4F4F),
+                    width: 1.0,
+                  ),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Container(
+                  margin: const EdgeInsets.only(top: 10),
+                  child: TextField(
+                    onChanged: (value) => setState(() => observPacient = value),
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Observações',
+                      hintStyle: AppTheme.inputHintTextStyle,
+                      errorText: !isValid['observPacient']!
+                          ? 'Observações inválidas'
+                          : null,
+                    ),
+                    minLines: 5,
+                    maxLines: 50,
                   ),
                 ),
               ),
+              // Container(
+              //   margin: const EdgeInsets.only(top: 10),
+              //   child: TextField(
+              //     onChanged: (value) => setState(() => observPacient = value),
+              //     decoration: InputDecoration(
+              //       labelText: 'Observações sobre o paciente',
+              //       errorText: !isValid['observPacient']!
+              //           ? 'Observações inválidas'
+              //           : null,
+              //     ),
+              //     minLines: 5,
+              //     maxLines: 50,
+              //   ),
+              // ),
+
               GestureDetector(
                 onTap: () {
                   setState(() {
@@ -276,36 +454,81 @@ class AddPatientState extends State<AddPatient> {
                 ),
               ),
               if (isVisible) ...[
-                TextField(
-                  onChanged: (value) =>
-                      setState(() => contactNamePacient = value),
-                  decoration: InputDecoration(
-                    labelText: 'Nome do contato',
-                    errorText: !isValid['contactNamePacient']!
-                        ? 'Nome inválido'
-                        : null,
+                // TextField(
+                //   onChanged: (value) =>
+                //       setState(() => contactNamePacient = value),
+                //   decoration: InputDecoration(
+                //     labelText: 'Nome do contato',
+                //     errorText: !isValid['contactNamePacient']!
+                //         ? 'Nome inválido'
+                //         : null,
+                //   ),
+                // ),
+                // TextField(
+                //   onChanged: (value) =>
+                //       setState(() => contactRelacionPacient = value),
+                //   decoration: InputDecoration(
+                //     labelText: 'Relação com o contato',
+                //     errorText: !isValid['contactRelacionPacient']!
+                //         ? 'Relação inválida'
+                //         : null,
+                //   ),
+                // ),
+                // TextField(
+                //   onChanged: (value) =>
+                //       setState(() => contactTelPacient = value),
+                //   decoration: InputDecoration(
+                //     labelText: 'Telefone para contato',
+                //     errorText: !isValid['contactTelPacient']!
+                //         ? 'Telefone inválido'
+                //         : null,
+                //   ),
+                // ),
+                TextFormInputContainer(
+                  child: TextField(
+                    onChanged: (value) =>
+                        setState(() => contactNamePacient = value),
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Nome',
+                      hintStyle: AppTheme.inputHintTextStyle,
+                      errorText: !isValid['contactNamePacient']!
+                          ? 'Nome inválido'
+                          : null,
+                    ),
                   ),
                 ),
-                TextField(
-                  onChanged: (value) =>
-                      setState(() => contactRelacionPacient = value),
-                  decoration: InputDecoration(
-                    labelText: 'Relação com o contato',
-                    errorText: !isValid['contactRelacionPacient']!
-                        ? 'Relação inválida'
-                        : null,
+
+                TextFormInputContainer(
+                  child: TextField(
+                    onChanged: (value) =>
+                        setState(() => contactRelacionPacient = value),
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Relacionamento',
+                      hintStyle: AppTheme.inputHintTextStyle,
+                      errorText: !isValid['contactRelacionPacient']!
+                          ? 'Relação inválida'
+                          : null,
+                    ),
                   ),
                 ),
-                TextField(
-                  onChanged: (value) =>
-                      setState(() => contactTelPacient = value),
-                  decoration: InputDecoration(
-                    labelText: 'Telefone para contato',
-                    errorText: !isValid['contactTelPacient']!
-                        ? 'Telefone inválido'
-                        : null,
+
+                TextFormInputContainer(
+                  child: TextField(
+                    onChanged: (value) =>
+                        setState(() => contactTelPacient = value),
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Telefone',
+                      hintStyle: AppTheme.inputHintTextStyle,
+                      errorText: !isValid['contactTelPacient']!
+                          ? 'Telefone inválido'
+                          : null,
+                    ),
                   ),
                 ),
+
                 if (!isValid['contactNamePacient']! &&
                     !isValid['contactRelacionPacient']! &&
                     !isValid['contactTelPacient']!)
@@ -321,21 +544,26 @@ class AddPatientState extends State<AddPatient> {
                     ),
                   ),
               ],
-              Container(
-                margin: const EdgeInsets.only(top: 30),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () => handleSave(),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.orange,
-                        disabledBackgroundColor: Colors.grey,
-                      ),
-                      child: const Text('Cadastrar'),
-                    ),
-                  ],
-                ),
+              // Container(
+              //   margin: const EdgeInsets.only(top: 30),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.center,
+              //     children: [
+              //       ElevatedButton(
+              //         onPressed: () => handleSave(),
+              //         style: ElevatedButton.styleFrom(
+              //           backgroundColor: Colors.orange,
+              //           disabledBackgroundColor: Colors.grey,
+              //         ),
+              //         child: const Text('Cadastrar'),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              SizedBox(height: 35),
+              ButtonStandardBottom(
+                text: 'Cadastrar',
+                action: () => handleSave(),
               ),
             ],
           ),

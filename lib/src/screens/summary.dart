@@ -2,10 +2,14 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart';
+import 'package:jofi_therapist_flutter/src/components/button_off_bottom.dart';
+import 'package:jofi_therapist_flutter/src/components/button_standard_bottom.dart';
+import 'package:jofi_therapist_flutter/src/components/emergency_contact_card.dart';
 import 'package:jofi_therapist_flutter/src/components/status_bar.dart';
 import 'package:jofi_therapist_flutter/src/navigators/top_appbar.dart';
 import 'package:jofi_therapist_flutter/src/server/api.dart';
 import 'package:jofi_therapist_flutter/src/server/token.dart';
+import 'package:jofi_therapist_flutter/themes/app_theme.dart';
 
 class Summary extends StatefulWidget {
   final Map<String, dynamic> route;
@@ -300,106 +304,113 @@ class SummaryState extends State<Summary> {
                 patient = snapshot.data!;
 
                 return SingleChildScrollView(
+                  padding: const EdgeInsets.only(left: 16.0, right: 16.0, top : 16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        'Nome:',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      // const Text(
+                      //   'Nome:',
+                      //   style: TextStyle(
+                      //     fontSize: 16,
+                      //     fontWeight: FontWeight.bold,
+                      //   ),
+                      // ),
                       Text(
                         patient['nome'] ?? 'Não informado',
                         style: const TextStyle(
                           fontSize: 16,
                         ),
                       ),
-                      const SizedBox(height: 16),
-                      const Text(
-                        'Email:',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      const SizedBox(height: 10),
+                      // const Text(
+                      //   'Email:',
+                      //   style: TextStyle(
+                      //     fontSize: 16,
+                      //     fontWeight: FontWeight.bold,
+                      //   ),
+                      // ),
                       Text(
                         patient['email'] ?? 'Não informado',
                         style: const TextStyle(
                           fontSize: 16,
                         ),
                       ),
-                      const SizedBox(height: 16),
-                      const Text(
-                        'Telefone:',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      const SizedBox(height: 10),
+                      // const Text(
+                      //   'Telefone:',
+                      //   style: TextStyle(
+                      //     fontSize: 16,
+                      //     fontWeight: FontWeight.bold,
+                      //   ),
+                      // ),
                       Text(
                         patient['telefone'] ?? 'Não informado',
                         style: const TextStyle(
                           fontSize: 16,
                         ),
                       ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 20),
                       const Text(
-                        'Data de Nascimento:',
+                        'Data de Nascimento',
                         style: TextStyle(
                           fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                          // fontWeight: FontWeight.bold,
+                          color: AppTheme.offBlack,
                         ),
                       ),
+                      const SizedBox(height: 4),
                       Text(
                         patient['nascimento'] ?? 'Não informado',
                         style: const TextStyle(
                           fontSize: 16,
                         ),
                       ),
-                      const SizedBox(height: 16),
-                      const Text(
-                        'Profissão:',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      const SizedBox(height: 20),
                       Text(
-                        patient['profissao'] ?? 'Não informado',
+                        'Profissão: ${patient['profissao'] ?? 'Não informado'}',
                         style: const TextStyle(
                           fontSize: 16,
+                          color: AppTheme.offBlack,
                         ),
                       ),
-                      const SizedBox(height: 16),
-                      const Text(
-                        'Descrição:',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      // Text(
+                      //   patient['profissao'] ?? 'Não informado',
+                      //   style: const TextStyle(
+                      //     fontSize: 16,
+                      //   ),
+                      // ),
+                      const SizedBox(height: 20),
+                      // const Text(
+                      //   'Descrição:',
+                      //   style: TextStyle(
+                      //     fontSize: 16,
+                      //     fontWeight: FontWeight.bold,
+                      //   ),
+                      // ),
                       Text(
                         patient['descricao'] ?? 'Não informado',
                         style: const TextStyle(
                           fontSize: 16,
+                          color: AppTheme.offBlack,
                         ),
                       ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 20),
                       const Text(
                         'Observações:',
                         style: TextStyle(
                           fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                          color: AppTheme.offBlack,
                         ),
                       ),
+                      const SizedBox(height: 4),
                       Text(
                         patient['observacoes'] ?? 'Não informado',
                         style: const TextStyle(
                           fontSize: 16,
                         ),
                       ),
+                      const SizedBox(height: 20),
+
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -407,73 +418,86 @@ class SummaryState extends State<Summary> {
                             'Contatos de Emergência:',
                             style: TextStyle(
                               fontSize: 16,
-                              fontWeight: FontWeight.bold,
+                              color: AppTheme.offBlack,
                             ),
                           ),
                           Visibility(
                             visible: !modalVisible,
-                            child: Center(
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(16.0),
-                                  child: Column(
-                                    children: [
-                                      const Text(
-                                        'Nome:',
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      Text(
-                                        patient['ContatoEmergencia']?['nome'] ??
-                                            'Não informado',
-                                        style: const TextStyle(
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      const SizedBox(height: 16),
-                                      const Text(
-                                        'Relação:',
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      Text(
-                                        patient['ContatoEmergencia']
-                                                ?['relacao'] ??
-                                            'Não informado',
-                                        style: const TextStyle(
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      const SizedBox(height: 16),
-                                      const Text(
-                                        'Telefone:',
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      Text(
-                                        patient['ContatoEmergencia']
-                                                ?['telefone'] ??
-                                            'Não informado',
-                                        style: const TextStyle(
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
+                            child:
+                            // Container(
+                            //   padding: const EdgeInsets.all(16.0),
+                            //   margin: const EdgeInsets.all(16.0),
+                            //   width: double.infinity,
+                            //   decoration: BoxDecoration(
+                            //     border: Border.all(color: AppTheme.standardOrange, width: 3),
+                            //     borderRadius: BorderRadius.circular(8),
+                            //     color: AppTheme.standardLightOrange,
+                            //   ),
+                            //   child: Row(
+                            //     children: [
+                            //       Column(
+                            //         crossAxisAlignment:
+                            //             CrossAxisAlignment.start,
+                            //         children: [
+                            //           // const Text(
+                            //           //   'Nome:',
+                            //           //   style: TextStyle(
+                            //           //     fontSize: 16,
+                            //           //     fontWeight: FontWeight.bold,
+                            //           //   ),
+                            //           // ),
+                            //           Text(
+                            //             patient['ContatoEmergencia']?['nome'] ??
+                            //                 'Não informado',
+                            //             style: const TextStyle(
+                            //               fontSize: 16,
+                            //             ),
+                            //           ),
+                            //           const SizedBox(height: 20),
+                            //           // const Text(
+                            //           //   'Relação:',
+                            //           //   style: TextStyle(
+                            //           //     fontSize: 16,
+                            //           //     fontWeight: FontWeight.bold,
+                            //           //   ),
+                            //           // ),
+                            //           Text(
+                            //             patient['ContatoEmergencia']
+                            //                     ?['relacao'] ??
+                            //                 'Não informado',
+                            //             style: const TextStyle(
+                            //               fontSize: 16,
+                            //             ),
+                            //           ),
+                            //           const SizedBox(height: 20),
+                            //           // const Text(
+                            //           //   'Telefone:',
+                            //           //   style: TextStyle(
+                            //           //     fontSize: 16,
+                            //           //     fontWeight: FontWeight.bold,
+                            //           //   ),
+                            //           // ),
+                            //           Text(
+                            //             patient['ContatoEmergencia']
+                            //                     ?['telefone'] ??
+                            //                 'Não informado',
+                            //             style: const TextStyle(
+                            //               fontSize: 16,
+                            //             ),
+                            //           ),
+                            //         ],
+                            //       ),
+                            //     ],
+                            //   ),
+                            // ),
+                            EmergencyContactCard(patient: patient),
                           ),
+
+                          // BOTÕES BOTTOM
+                          ButtonOffBottom(text: 'Gerar convite', action: () => {}),
+                          ButtonOffBottom(text: 'Conversar', action: () => {}),
+                          ButtonOffBottom(text: 'Ver respostas de questionários', action: () => {}),
+                          ButtonStandardBottom(text: 'Enviar Questionário', action: () => {})
                         ],
                       )
                     ],

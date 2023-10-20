@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static const Color iconGrey = Color(0xFF8E8E8E);
   static const Color standardOrange = Color(0xFFFF983D);
+  static const Color standardLightOrange = Color(0xFFFFF6EE);
   static const Color offBlack = Color(0xFF595959);
+  static const Color offBlack2 = Color(0xFF4F4F4F);
 
   static const TextStyle navbarTextStyle = TextStyle(
       color: AppTheme.offBlack,
@@ -15,6 +17,12 @@ class AppTheme {
       color: Colors.black,
       fontSize: 20,
       fontWeight: FontWeight.w600,
+      fontFamily: 'Inter'
+  );
+
+  static const TextStyle inputHintTextStyle = TextStyle(
+      color: AppTheme.offBlack,
+      fontSize: 16,
       fontFamily: 'Inter'
   );
 

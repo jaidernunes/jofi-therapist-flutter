@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jofi_therapist_flutter/themes/app_theme.dart';
 
 class Search extends StatelessWidget {
   final String placeholder;
@@ -18,7 +17,7 @@ class Search extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(
         top: 30,
-        bottom: 30,
+        bottom: 40,
       ),
       child: Row(
         children: [
@@ -34,28 +33,23 @@ class Search extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.only(left: 10, bottom: 3),
-                      child: TextFormField(
-                        style: const TextStyle(
-                          fontFamily: 'Inter',
-                          fontWeight: FontWeight.w400,
-                        ),
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: placeholder,
-                        ),
-                        controller: controller,
-                        onChanged: onChanged,
-                      ),
-                    ),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 15),
+                    child: Icon(Icons.search),
                   ),
-                   const Padding(
-                    padding: EdgeInsets.only(right: 5),
-                    child: Icon(Icons.search, color: AppTheme.standardOrange,
-                    size: 40,),
-                    // child: Image.asset('assets/images/search.png'),
+                  Expanded(
+                    child: TextFormField(
+                      style: const TextStyle(
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w400,
+                      ),
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: placeholder,
+                      ),
+                      controller: controller,
+                      onChanged: onChanged,
+                    ),
                   ),
                 ],
               ),
