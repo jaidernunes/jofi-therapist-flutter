@@ -7,6 +7,7 @@ import 'package:jofi_therapist_flutter/src/components/button_standard_bottom.dar
 import 'package:jofi_therapist_flutter/src/components/emergency_contact_card.dart';
 import 'package:jofi_therapist_flutter/src/components/status_bar.dart';
 import 'package:jofi_therapist_flutter/src/navigators/top_appbar.dart';
+import 'package:jofi_therapist_flutter/src/navigators/top_appbar_edit.dart';
 import 'package:jofi_therapist_flutter/src/server/api.dart';
 import 'package:jofi_therapist_flutter/src/server/token.dart';
 import 'package:jofi_therapist_flutter/themes/app_theme.dart';
@@ -281,7 +282,7 @@ class SummaryState extends State<Summary> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const TopAppBar(title: "Paciente"),
+      appBar: const TopAppBarEdit(title: "Paciente"),
 
       // appBar: AppBar(
       //   title: const Text("Paciente"),
@@ -304,7 +305,8 @@ class SummaryState extends State<Summary> {
                 patient = snapshot.data!;
 
                 return SingleChildScrollView(
-                  padding: const EdgeInsets.only(left: 16.0, right: 16.0, top : 16.0),
+                  padding:
+                      const EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -424,80 +426,91 @@ class SummaryState extends State<Summary> {
                           Visibility(
                             visible: !modalVisible,
                             child:
-                            // Container(
-                            //   padding: const EdgeInsets.all(16.0),
-                            //   margin: const EdgeInsets.all(16.0),
-                            //   width: double.infinity,
-                            //   decoration: BoxDecoration(
-                            //     border: Border.all(color: AppTheme.standardOrange, width: 3),
-                            //     borderRadius: BorderRadius.circular(8),
-                            //     color: AppTheme.standardLightOrange,
-                            //   ),
-                            //   child: Row(
-                            //     children: [
-                            //       Column(
-                            //         crossAxisAlignment:
-                            //             CrossAxisAlignment.start,
-                            //         children: [
-                            //           // const Text(
-                            //           //   'Nome:',
-                            //           //   style: TextStyle(
-                            //           //     fontSize: 16,
-                            //           //     fontWeight: FontWeight.bold,
-                            //           //   ),
-                            //           // ),
-                            //           Text(
-                            //             patient['ContatoEmergencia']?['nome'] ??
-                            //                 'Não informado',
-                            //             style: const TextStyle(
-                            //               fontSize: 16,
-                            //             ),
-                            //           ),
-                            //           const SizedBox(height: 20),
-                            //           // const Text(
-                            //           //   'Relação:',
-                            //           //   style: TextStyle(
-                            //           //     fontSize: 16,
-                            //           //     fontWeight: FontWeight.bold,
-                            //           //   ),
-                            //           // ),
-                            //           Text(
-                            //             patient['ContatoEmergencia']
-                            //                     ?['relacao'] ??
-                            //                 'Não informado',
-                            //             style: const TextStyle(
-                            //               fontSize: 16,
-                            //             ),
-                            //           ),
-                            //           const SizedBox(height: 20),
-                            //           // const Text(
-                            //           //   'Telefone:',
-                            //           //   style: TextStyle(
-                            //           //     fontSize: 16,
-                            //           //     fontWeight: FontWeight.bold,
-                            //           //   ),
-                            //           // ),
-                            //           Text(
-                            //             patient['ContatoEmergencia']
-                            //                     ?['telefone'] ??
-                            //                 'Não informado',
-                            //             style: const TextStyle(
-                            //               fontSize: 16,
-                            //             ),
-                            //           ),
-                            //         ],
-                            //       ),
-                            //     ],
-                            //   ),
-                            // ),
-                            EmergencyContactCard(patient: patient),
+                                // Container(
+                                //   padding: const EdgeInsets.all(16.0),
+                                //   margin: const EdgeInsets.all(16.0),
+                                //   width: double.infinity,
+                                //   decoration: BoxDecoration(
+                                //     border: Border.all(color: AppTheme.standardOrange, width: 3),
+                                //     borderRadius: BorderRadius.circular(8),
+                                //     color: AppTheme.standardLightOrange,
+                                //   ),
+                                //   child: Row(
+                                //     children: [
+                                //       Column(
+                                //         crossAxisAlignment:
+                                //             CrossAxisAlignment.start,
+                                //         children: [
+                                //           // const Text(
+                                //           //   'Nome:',
+                                //           //   style: TextStyle(
+                                //           //     fontSize: 16,
+                                //           //     fontWeight: FontWeight.bold,
+                                //           //   ),
+                                //           // ),
+                                //           Text(
+                                //             patient['ContatoEmergencia']?['nome'] ??
+                                //                 'Não informado',
+                                //             style: const TextStyle(
+                                //               fontSize: 16,
+                                //             ),
+                                //           ),
+                                //           const SizedBox(height: 20),
+                                //           // const Text(
+                                //           //   'Relação:',
+                                //           //   style: TextStyle(
+                                //           //     fontSize: 16,
+                                //           //     fontWeight: FontWeight.bold,
+                                //           //   ),
+                                //           // ),
+                                //           Text(
+                                //             patient['ContatoEmergencia']
+                                //                     ?['relacao'] ??
+                                //                 'Não informado',
+                                //             style: const TextStyle(
+                                //               fontSize: 16,
+                                //             ),
+                                //           ),
+                                //           const SizedBox(height: 20),
+                                //           // const Text(
+                                //           //   'Telefone:',
+                                //           //   style: TextStyle(
+                                //           //     fontSize: 16,
+                                //           //     fontWeight: FontWeight.bold,
+                                //           //   ),
+                                //           // ),
+                                //           Text(
+                                //             patient['ContatoEmergencia']
+                                //                     ?['telefone'] ??
+                                //                 'Não informado',
+                                //             style: const TextStyle(
+                                //               fontSize: 16,
+                                //             ),
+                                //           ),
+                                //         ],
+                                //       ),
+                                //     ],
+                                //   ),
+                                // ),
+                                EmergencyContactCard(patient: patient),
                           ),
 
                           // BOTÕES BOTTOM
-                          ButtonOffBottom(text: 'Gerar convite', action: () => {}),
+                          ButtonOffBottom(
+                              text: 'Gerar convite', action: () => {}),
                           ButtonOffBottom(text: 'Conversar', action: () => {}),
-                          ButtonOffBottom(text: 'Ver respostas de questionários', action: () => {}),
-                          ButtonStandardBottom(text: 'Enviar Questionário', action: () => {})
+                          ButtonOffBottom(
+                              text: 'Ver respostas de questionários',
+                              action: () => {}),
+                          ButtonStandardBottom(
+                              text: 'Enviar Questionário',
+                              action: () => {
+                                    Navigator.pushNamed(
+                                      context,
+                                      "QuizDatePatient",
+                                      arguments: {'patientId': patient},
+                                    )
+                                  })
                         ],
                       )
                     ],

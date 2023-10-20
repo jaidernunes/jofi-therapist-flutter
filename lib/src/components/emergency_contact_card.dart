@@ -17,35 +17,31 @@ class EmergencyContactCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
         color: AppTheme.standardLightOrange,
       ),
-      child: Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                patient['ContatoEmergencia']?['nome'] ?? 'Não informado',
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                patient['ContatoEmergencia']?['relacao'] ?? 'Não informado',
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                patient['ContatoEmergencia']?['telefone'] ?? 'Não informado',
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ],
+          Text(
+            patient['ContatoEmergencia']?['nome'] ?? 'Não informado',
+            style: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          const SizedBox(height: 16),
+          Text(
+            patient['ContatoEmergencia']?['relacao'] ?? 'Não informado',
+            style: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          const SizedBox(height: 16),
+          Text(
+            patient['ContatoEmergencia']?['telefone'] ?? 'Não informado',
+            style: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ],
       ),
