@@ -425,74 +425,74 @@ class SummaryState extends State<Summary> {
                           ),
                           Visibility(
                             visible: !modalVisible,
-                            child:
-                                // Container(
-                                //   padding: const EdgeInsets.all(16.0),
-                                //   margin: const EdgeInsets.all(16.0),
-                                //   width: double.infinity,
-                                //   decoration: BoxDecoration(
-                                //     border: Border.all(color: AppTheme.standardOrange, width: 3),
-                                //     borderRadius: BorderRadius.circular(8),
-                                //     color: AppTheme.standardLightOrange,
-                                //   ),
-                                //   child: Row(
-                                //     children: [
-                                //       Column(
-                                //         crossAxisAlignment:
-                                //             CrossAxisAlignment.start,
-                                //         children: [
-                                //           // const Text(
-                                //           //   'Nome:',
-                                //           //   style: TextStyle(
-                                //           //     fontSize: 16,
-                                //           //     fontWeight: FontWeight.bold,
-                                //           //   ),
-                                //           // ),
-                                //           Text(
-                                //             patient['ContatoEmergencia']?['nome'] ??
-                                //                 'Não informado',
-                                //             style: const TextStyle(
-                                //               fontSize: 16,
-                                //             ),
-                                //           ),
-                                //           const SizedBox(height: 20),
-                                //           // const Text(
-                                //           //   'Relação:',
-                                //           //   style: TextStyle(
-                                //           //     fontSize: 16,
-                                //           //     fontWeight: FontWeight.bold,
-                                //           //   ),
-                                //           // ),
-                                //           Text(
-                                //             patient['ContatoEmergencia']
-                                //                     ?['relacao'] ??
-                                //                 'Não informado',
-                                //             style: const TextStyle(
-                                //               fontSize: 16,
-                                //             ),
-                                //           ),
-                                //           const SizedBox(height: 20),
-                                //           // const Text(
-                                //           //   'Telefone:',
-                                //           //   style: TextStyle(
-                                //           //     fontSize: 16,
-                                //           //     fontWeight: FontWeight.bold,
-                                //           //   ),
-                                //           // ),
-                                //           Text(
-                                //             patient['ContatoEmergencia']
-                                //                     ?['telefone'] ??
-                                //                 'Não informado',
-                                //             style: const TextStyle(
-                                //               fontSize: 16,
-                                //             ),
-                                //           ),
-                                //         ],
-                                //       ),
-                                //     ],
-                                //   ),
-                                // ),
-                                EmergencyContactCard(patient: patient),
+                            child: EmergencyContactCard(patient: patient),
+
+                            // Container(
+                            //   padding: const EdgeInsets.all(16.0),
+                            //   margin: const EdgeInsets.all(16.0),
+                            //   width: double.infinity,
+                            //   decoration: BoxDecoration(
+                            //     border: Border.all(color: AppTheme.standardOrange, width: 3),
+                            //     borderRadius: BorderRadius.circular(8),
+                            //     color: AppTheme.standardLightOrange,
+                            //   ),
+                            //   child: Row(
+                            //     children: [
+                            //       Column(
+                            //         crossAxisAlignment:
+                            //             CrossAxisAlignment.start,
+                            //         children: [
+                            //           // const Text(
+                            //           //   'Nome:',
+                            //           //   style: TextStyle(
+                            //           //     fontSize: 16,
+                            //           //     fontWeight: FontWeight.bold,
+                            //           //   ),
+                            //           // ),
+                            //           Text(
+                            //             patient['ContatoEmergencia']?['nome'] ??
+                            //                 'Não informado',
+                            //             style: const TextStyle(
+                            //               fontSize: 16,
+                            //             ),
+                            //           ),
+                            //           const SizedBox(height: 20),
+                            //           // const Text(
+                            //           //   'Relação:',
+                            //           //   style: TextStyle(
+                            //           //     fontSize: 16,
+                            //           //     fontWeight: FontWeight.bold,
+                            //           //   ),
+                            //           // ),
+                            //           Text(
+                            //             patient['ContatoEmergencia']
+                            //                     ?['relacao'] ??
+                            //                 'Não informado',
+                            //             style: const TextStyle(
+                            //               fontSize: 16,
+                            //             ),
+                            //           ),
+                            //           const SizedBox(height: 20),
+                            //           // const Text(
+                            //           //   'Telefone:',
+                            //           //   style: TextStyle(
+                            //           //     fontSize: 16,
+                            //           //     fontWeight: FontWeight.bold,
+                            //           //   ),
+                            //           // ),
+                            //           Text(
+                            //             patient['ContatoEmergencia']
+                            //                     ?['telefone'] ??
+                            //                 'Não informado',
+                            //             style: const TextStyle(
+                            //               fontSize: 16,
+                            //             ),
+                            //           ),
+                            //         ],
+                            //       ),
+                            //     ],
+                            //   ),
+                            // ),
                           ),
 
                           // BOTÕES BOTTOM

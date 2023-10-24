@@ -28,18 +28,18 @@ class AddPatientState extends State<AddPatient> {
   String contactRelacionPacient = "";
   String contactTelPacient = "";
   bool preventDuplication = false;
-  List emergencyContacts = [
-    {
-      'nome': 'João',
-      'relacao': 'Pai',
-      'telefone': '(11) 99999-9999',
-    },
-    {
-      'nome': 'Maria',
-      'relacao': 'Mãe',
-      'telefone': '(11) 99999-9999',
-    },
-  ];
+  // List emergencyContacts = [
+  //   {
+  //     'nome': 'João',
+  //     'relacao': 'Pai',
+  //     'telefone': '(11) 99999-9999',
+  //   },
+  //   {
+  //     'nome': 'Maria',
+  //     'relacao': 'Mãe',
+  //     'telefone': '(11) 99999-9999',
+  //   },
+  // ];
 
   Map<String, bool> isValid = {
     'namePacient': true,
@@ -68,9 +68,9 @@ class AddPatientState extends State<AddPatient> {
         'telPacient': validateParam(telPacient),
         'descriptionPacient': validateParam(descriptionPacient),
         'observPacient': validateParam(observPacient),
-        // 'contactNamePacient': contactIsValid,
-        // 'contactRelacionPacient': contactIsValid,
-        // 'contactTelPacient': contactIsValid,
+        'contactNamePacient': contactIsValid,
+        'contactRelacionPacient': contactIsValid,
+        'contactTelPacient': contactIsValid,
       };
     });
   }
@@ -103,12 +103,12 @@ class AddPatientState extends State<AddPatient> {
         'descricao': descriptionPacient,
         'observacoes': observPacient,
         'terapeutaId': userId,
-        // if (contactIsValid) //TODO: move this to add contact
-        //   'contatoEmergencia': [{
-        //     'nome': contactNamePacient,
-        //     'relacao': contactRelacionPacient,
-        //     'telefone': contactTelPacient,
-        //   },],
+        if (contactIsValid)
+          'contatoEmergencia': {
+            'nome': contactNamePacient,
+            'relacao': contactRelacionPacient,
+            'telefone': contactTelPacient,
+          },
       });
 
       if (response.statusCode == 200) {
@@ -268,7 +268,7 @@ class AddPatientState extends State<AddPatient> {
                           builder: (BuildContext context, Widget? child) {
                             return Theme(
                               data: ThemeData.light().copyWith(
-                                primaryColor: AppTheme.standardOrange ,
+                                primaryColor: AppTheme.standardOrange,
                                 buttonTheme: const ButtonThemeData(
                                   textTheme: ButtonTextTheme.primary,
                                 ),
@@ -476,94 +476,91 @@ class AddPatientState extends State<AddPatient> {
                       //       : Icons.keyboard_arrow_down,
                       //   size: 24.0,
                       // ),
-
                     ],
                   ),
                 ),
               ),
 
-              if (emergencyContacts.isNotEmpty)
-                ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: emergencyContacts.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      padding: const EdgeInsets.all(16.0),
-                      margin: const EdgeInsets.symmetric(vertical: 16.0),
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                            color: AppTheme.standardOrange, width: 3),
-                        borderRadius: BorderRadius.circular(8),
-                        color: AppTheme.standardLightOrange,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                emergencyContacts[index]['nome'],
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              const SizedBox(height: 16),
-                              Text(
-                                emergencyContacts[index]['relacao'],
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              const SizedBox(height: 16),
-                              Text(
-                                emergencyContacts[index]['telefone'],
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Column(
-                            children: [
-                              IconButton(
-                                onPressed: () => {
-                                  setState(() {
-                                    contactNamePacient = emergencyContacts[index]['nome'];
-                                    contactRelacionPacient = emergencyContacts[index]['relacao'];
-                                    contactTelPacient = emergencyContacts[index]['telefone'];
-                                    emergencyContacts.removeAt(index);
-                                    isVisible = true;
-                                  })
-                                },
-                                icon: Image.asset("assets/images/edit.png"),
-                                iconSize: 45,
-                              ),
-                              IconButton(
-                                onPressed: () => {
-                                  setState(() {
-                                    emergencyContacts.removeAt(index);
-                                  })
-                                },
-                                icon: Image.asset("assets/images/icon_trash.png"),
-                                iconSize: 45,
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    );
-                  },
-                ),
-
+              // if (emergencyContacts.isNotEmpty)
+              //   ListView.builder(
+              //     physics: const NeverScrollableScrollPhysics(),
+              //     shrinkWrap: true,
+              //     itemCount: emergencyContacts.length,
+              //     itemBuilder: (context, index) {
+              //       return Container(
+              //         padding: const EdgeInsets.all(16.0),
+              //         margin: const EdgeInsets.symmetric(vertical: 16.0),
+              //         width: double.infinity,
+              //         decoration: BoxDecoration(
+              //           border: Border.all(
+              //               color: AppTheme.standardOrange, width: 3),
+              //           borderRadius: BorderRadius.circular(8),
+              //           color: AppTheme.standardLightOrange,
+              //         ),
+              //         child: Row(
+              //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //           children: [
+              //             Column(
+              //               crossAxisAlignment: CrossAxisAlignment.start,
+              //               children: [
+              //                 Text(
+              //                   emergencyContacts[index]['nome'],
+              //                   style: const TextStyle(
+              //                     fontSize: 18,
+              //                     fontWeight: FontWeight.w500,
+              //                   ),
+              //                 ),
+              //                 const SizedBox(height: 16),
+              //                 Text(
+              //                   emergencyContacts[index]['relacao'],
+              //                   style: const TextStyle(
+              //                     fontSize: 18,
+              //                     fontWeight: FontWeight.w500,
+              //                   ),
+              //                 ),
+              //                 const SizedBox(height: 16),
+              //                 Text(
+              //                   emergencyContacts[index]['telefone'],
+              //                   style: const TextStyle(
+              //                     fontSize: 18,
+              //                     fontWeight: FontWeight.w500,
+              //                   ),
+              //                 ),
+              //               ],
+              //             ),
+              //             Column(
+              //               children: [
+              //                 IconButton(
+              //                   onPressed: () => {
+              //                     setState(() {
+              //                       contactNamePacient = emergencyContacts[index]['nome'];
+              //                       contactRelacionPacient = emergencyContacts[index]['relacao'];
+              //                       contactTelPacient = emergencyContacts[index]['telefone'];
+              //                       emergencyContacts.removeAt(index);
+              //                       isVisible = true;
+              //                     })
+              //                   },
+              //                   icon: Image.asset("assets/images/edit.png"),
+              //                   iconSize: 45,
+              //                 ),
+              //                 IconButton(
+              //                   onPressed: () => {
+              //                     setState(() {
+              //                       emergencyContacts.removeAt(index);
+              //                     })
+              //                   },
+              //                   icon: Image.asset("assets/images/icon_trash.png"),
+              //                   iconSize: 45,
+              //                 ),
+              //               ],
+              //             )
+              //           ],
+              //         ),
+              //       );
+              //     },
+              //   ),
 
               if (isVisible) ...[
-
                 // TextField(
                 //   onChanged: (value) =>
                 //       setState(() => contactNamePacient = value),
@@ -653,21 +650,21 @@ class AddPatientState extends State<AddPatient> {
                     ),
                   ),
               ],
-              if (isVisible)
-                ButtonStandardBottom(
-                  text: 'Adicionar Contato de Emergência',
-                  action: () {
-                    setState(() {
-                      emergencyContacts.add({
-                        'nome': contactNamePacient,
-                        'relacao': contactRelacionPacient,
-                        'telefone': contactTelPacient,
-                      });
-                      isVisible = false;
-
-                    });
-                  },
-                ),
+              // if (isVisible)
+              // ButtonStandardBottom(
+              //   text: 'Adicionar Contato de Emergência',
+              //   action: () {
+              //     setState(() {
+              //       emergencyContacts.add({
+              //         'nome': contactNamePacient,
+              //         'relacao': contactRelacionPacient,
+              //         'telefone': contactTelPacient,
+              //       });
+              //       isVisible = false;
+              //
+              //     });
+              //   },
+              // ),
 
               // Container(
               //   margin: const EdgeInsets.only(top: 30),
@@ -686,7 +683,7 @@ class AddPatientState extends State<AddPatient> {
               //   ),
               // ),
 
-              SizedBox(height: 35),
+              const SizedBox(height: 35),
               ButtonStandardBottom(
                 text: 'Cadastrar',
                 action: () => handleSave(),
