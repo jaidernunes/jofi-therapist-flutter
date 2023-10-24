@@ -452,7 +452,7 @@ class AddPatientState extends State<AddPatient> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
-                        'Contatos de Emergência',
+                        'Contato de Emergência',
                         style: TextStyle(fontSize: 16.0),
                       ),
 

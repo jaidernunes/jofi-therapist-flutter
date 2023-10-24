@@ -417,7 +417,7 @@ class SummaryState extends State<Summary> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            'Contatos de Emergência:',
+                            'Contato de Emergência:',
                             style: TextStyle(
                               fontSize: 16,
                               color: AppTheme.offBlack,
