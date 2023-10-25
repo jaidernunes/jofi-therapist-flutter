@@ -507,8 +507,8 @@ class SummaryState extends State<Summary> {
                               action: () => {
                                     Navigator.pushNamed(
                                       context,
-                                      "QuizDatePatient",
-                                      arguments: {'patientId': patient},
+                                      "QuizPatient",
+                                      arguments: {'patientId': widget.route['id']},
                                     )
                                   })
                         ],
